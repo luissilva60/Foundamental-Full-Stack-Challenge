@@ -8,10 +8,13 @@ services:
       - database/.env
     # Set max_allowed_packet to 256M
     command: --max_allowed_packet=32505856
+
     ports:
       - "3306:3306"
     volumes:
+      - ./sql:/docker-entrypoint-initdb.d
       - ./database/data:/var/lib/mysql
+
     networks:
       - fullstack-challenge
 
